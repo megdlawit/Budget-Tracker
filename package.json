@@ -1,0 +1,48 @@
+{
+  "name": "cashwise",
+  "version": "0.0.1",
+  "description": "Save your cash, save your wife.",
+  "main": "index.js",
+  "packageManager": "pnpm@8.6.6",
+  "keywords": [],
+  "author": "4seconds",
+  "license": "ISC",
+  "scripts": {
+    "test": "vitest",
+    "coverage": "vitest run --coverage",
+    "dev": "tsup --watch --onSuccess 'node dist/index.js'",
+    "build": "tsup",
+    "start:prod": "pnpm run build && NODE_ENV=production node dist/index.js",
+    "clean": "rm -rf dist node_modules",
+    "clean:build": "rm -rf dist",
+    "lint": "eslint . --color -f table",
+    "lint:fix": "pnpm run lint --fix",
+    "typecheck": "tsc",
+    "prepare": "husky install",
+    "format": "prettier . --write",
+    "format:write": "prettier --write"
+  },
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "@swc/core": "^1.3.90",
+    "@types/express": "^4.17.18",
+    "eslint": "^8.50.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-import": "^2.28.1",
+    "eslint-plugin-prettier": "^5.0.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^14.0.1",
+    "prettier": "^3.0.3",
+    "tsup": "^7.2.0",
+    "typescript": "^5.2.2"
+  },
+  "lint-staged": {
+    "src/*.ts": "eslint --cache --fix",
+    ".{json,md}": [
+      "pnpm run format:write"
+    ]
+  }
+}

@@ -1,0 +1,11 @@
+version: '3.2'
+
+services:
+  banks-backend:
+    build:
+        context: .
+        dockerfile: Dockerfile
+    image: cashwise-backend:latest
+    container_name: cashwise-backend-container
+    restart: unless-stopped
+    network_mode: 'host'
